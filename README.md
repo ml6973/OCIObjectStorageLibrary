@@ -25,9 +25,11 @@ Note:  Chameleon and AWS configuration parameters are only needed based on the c
 
 ## Usage
 
+```
 import cloudStorage
 
 putObject(objectData)
+```
 
 Returns the response if using chameleon cloud e.x. 201 if object was created successfully.
 
