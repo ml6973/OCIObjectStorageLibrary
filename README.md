@@ -1,7 +1,7 @@
 # OCI Cloud Object Storage Library
 Contains the Python library for cloud object storage
 
-*Configuration*
+## Configuration
 
 The configuration file "config.txt" must be created in the configuration directory.  Below is the format:
 
@@ -23,7 +23,7 @@ awsBucketName = Use the appropriate bucket name for storage
 
 Note:  Chameleon and AWS configuration parameters are only needed based on the cloudSelect parameter i.e. if you have "cloudSelect = chameleon", all AWS parameters may be omitted and vice versa.
 
-*Usage*
+## Usage
 
 import cloudStorage
 
