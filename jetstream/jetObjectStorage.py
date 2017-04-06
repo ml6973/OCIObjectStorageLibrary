@@ -1,5 +1,5 @@
 import configuration.globalVars as globalVars
-import chameleonAuth as chameleonAuth
+import jetAuth as jetAuth
 import requests
 import json
 import os
@@ -33,7 +33,7 @@ def fill_queue(data, queue, chunkSize):
    queue.close()
 
 def putObject(fileName, path, objectData):
-    url = globalVars.chameleonObjectStorageURL + "/" + globalVars.chameleonContainerName + path + fileName
+    url = globalVars.jetstreamObjectStorageURL + "/" + globalVars.jetstreamContainerName + path + fileName
 
     counter = 1
     fileByteCount = 0
@@ -44,7 +44,7 @@ def putObject(fileName, path, objectData):
 
     while fileByteCount < fileTotalCount:
 
-       token_id = chameleonAuth.auth()
+       token_id = jetAuth.auth()
        my_headers = {"Content-Type": 'binary/octet-stream', "Transfer-Encoding": "chunked", "X-Auth-Token": token_id}
 
        # Create a new buffer for streaming

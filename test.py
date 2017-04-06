@@ -1,3 +1,4 @@
 import cloudStorage
 
-cloudStorage.putObject("hello world")
+f = open('pathToFile', 'rb')
+cloudStorage.putObject(f)

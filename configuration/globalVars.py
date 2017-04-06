@@ -5,6 +5,15 @@ import os
 def init():
     get_config()
 
+    global uploadSize
+    uploadSize = int(config.get('GlobalInformation', 'uploadSize'))
+    uploadSize = uploadSize * 1024 * 1024
+
+    global bufferSize
+    bufferSize = int(config.get('GlobalInformation', 'bufferSize'))
+    bufferSize = bufferSize * 1024 * 1024
+    bufferSize = min(bufferSize, uploadSize)
+
     global chameleon_tenant_id
     chameleon_tenant_id = ""
 
@@ -79,6 +88,49 @@ def init():
     except ConfigParser.NoOptionError:
 	if (cloudSelect != "aws"):
 	    pass
+
+    global jetstreamAuthURL
+    try:
+        jetstreamAuthURL = config.get('GlobalInformation', 'jetstreamAuthURL')
+    except ConfigParser.NoOptionError:
+        if (cloudSelect != "jetstream"):
+	    pass
+    
+    global jetstreamObjectStorageURL
+    try:
+        jetstreamObjectStorageURL = config.get('GlobalInformation', 'jetstreamObjectStorageURL')
+    except ConfigParser.NoOptionError:
+        if (cloudSelect != "jetstream"):
+	    pass
+
+    global jetstreamTenantID
+    try:
+        jetstreamTenantID = config.get('GlobalInformation', 'jetstreamTenantID')
+    except ConfigParser.NoOptionError:
+        if (cloudSelect != "jetstream"):
+	    pass
+
+    global jetstreamContainerName
+    try:
+        jetstreamContainerName = config.get('GlobalInformation', 'jetstreamContainerName')
+    except ConfigParser.NoOptionError:
+        if (cloudSelect != "jetstream"):
+	    pass
+
+    global jetstreamCloudUsername
+    try:
+        jetstreamCloudUsername = config.get('GlobalInformation', 'jetstreamCloudUsername')
+    except ConfigParser.NoOptionError:
+        if (cloudSelect != "jetstream"):
+	    pass
+
+    global jetstreamCloudPassword
+    try:
+        jetstreamCloudPassword = config.get('GlobalInformation', 'jetstreamCloudPassword')
+    except ConfigParser.NoOptionError:
+        if (cloudSelect != "jetstream"):
+	    pass
+
 
 
 def get_config():
