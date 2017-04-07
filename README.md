@@ -8,6 +8,8 @@ The configuration file "config.txt" must be created in the configuration directo
 ```
 [GlobalInformation]
 cloudSelect = Can be either aws or chameleon
+uploadSize = The max size in Megabytes of each chunk of the file being uploaded
+bufferSize = The max size in Megabytes of memory to allocate to the streaming buffer
 chameleonAuthURL = Use the appropriate authentication (identity) endpoint
 chameleonObjectStorageURL = Use the appropriate object storage endpoint
 chameleonTenantName = Use the appropriate tenant name
@@ -18,19 +20,24 @@ awsAccess = aws Access Key for authentication
 awsSecret = aws Secret Key for authentication
 awsRegion = Use the appropriate region for authentication and storage
 awsBucketName = Use the appropriate bucket name for storage
+jetstreamAuthURL = Use the appropriate authentication (identity) endpoint
+jetstreamObjectStorageURL = Use the appropriate object storage endpoint
+jetstreamTenantID = Use the appropriate Tenant ID (not name)
+jetstreamContainerName = Use the appropriate container name
+jetstreamCloudUsername = Username to authenticate with chameleon cloud
+jetstreamCloudPassword = Password to authenticate with chameleon cloud
 
 ```
 
-Note:  Chameleon and AWS configuration parameters are only needed based on the cloudSelect parameter i.e. if you have "cloudSelect = chameleon", all AWS parameters may be omitted and vice versa.
+Note:  Cloud specific configuration parameters are only needed based on the cloudSelect parameter i.e. if you have "cloudSelect = chameleon", all other cloud parameters such as AWS will be omitted and vice versa.
 
 ## Usage
+Ensure the object you are passing is a "file-like" class.
 
 ```
 import cloudStorage
 
 putObject(objectData)
 ```
-
-Returns the response if using chameleon cloud e.x. 201 if object was created successfully.
 
 The included test.py file shows a simple use case for the putObject function.
