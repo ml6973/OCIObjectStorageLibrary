@@ -1,4 +1,4 @@
 import cloudStorage
 
 f = open('pathToFile', 'rb')
-cloudStorage.putObject(f)
+cloudStorage.putObject(f, "desiredCloudPath")

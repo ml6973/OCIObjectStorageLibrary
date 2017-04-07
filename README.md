@@ -33,11 +33,12 @@ Note:  Cloud specific configuration parameters are only needed based on the clou
 
 ## Usage
 Ensure the object you are passing is a "file-like" class.
+The path parameter is optional, use it to specific the pseudo directory within the container the file will be uploaded to
 
 ```
 import cloudStorage
 
-putObject(objectData)
+putObject(objectData, path)
 ```
 
 The included test.py file shows a simple use case for the putObject function.
